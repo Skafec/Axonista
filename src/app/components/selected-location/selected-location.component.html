@@ -1,1 +1,22 @@
-<p>selected-location works!</p>
+<div class="selected-location">
+  <form [formGroup]="selectedLocationForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="name"> Please enter a city: </label>
+      <input id="city" type="text" formControlName="city" />
+    </div>
+
+    <button class="button" type="submit">Check weather conditions</button>
+  </form>
+
+  <div
+    *ngIf="
+      selectedLocationApiService.selectedLocationApiData$
+        | async as selectedLocationData
+    "
+  >
+    <p>
+      {{ selectedLocationData.main.temp }} is temperature in
+      {{ selectedLocationData.name }}
+    </p>
+  </div>
+</div>

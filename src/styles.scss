@@ -1,2 +1,7 @@
 @use "styles/reset";
 @use "styles/fonts";
+
+html,
+body {
+  height: 100%;
+}

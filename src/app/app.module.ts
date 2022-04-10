@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { CurrentLocationComponent } from './components/current-location/current-location.component';
 import { SelectedLocationComponent } from './components/selected-location/selected-location.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     SelectedLocationComponent,
     SidebarComponent,
   ],
-  imports: [BrowserModule, HttpClientModule],
+  imports: [BrowserModule, HttpClientModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
