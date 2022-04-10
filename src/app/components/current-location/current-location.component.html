@@ -1,1 +1,12 @@
-<p>current-location works!</p>
+<div
+  class="current-location"
+  *ngIf="
+    currentLocationApiService.currentLocationApiData$
+      | async as currentLocationData
+  "
+>
+  <h1>Current location: {{ currentLocationData.name }}</h1>
+  <p>
+    Current temperature: {{ currentLocationData.main.temp }}<span>&#176;</span>C
+  </p>
+</div>

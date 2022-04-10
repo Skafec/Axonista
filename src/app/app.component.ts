@@ -11,18 +11,9 @@ import { CurrentLocationApiService } from './services/api/current-location-api.s
 export class AppComponent implements OnInit {
   userCurrentLocationData: LocationData;
 
-  constructor(
-    public readonly currentLocationApiService: CurrentLocationApiService,
-    private userLocationService: UserLocationService
-  ) {}
+  constructor(private userLocationService: UserLocationService) {}
 
   ngOnInit(): void {
     this.userLocationService.getLocation();
-
-    this.currentLocationApiService.initialize();
-
-    this.currentLocationApiService.currentLocationApiData$.subscribe((res) => {
-      console.log(res);
-    });
   }
 }
