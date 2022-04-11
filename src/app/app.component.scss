@@ -1,0 +1,13 @@
+.app {
+  background-color: #fff;
+  display: flex;
+  height: 100%;
+
+  &__sidebar {
+    width: 12.5%;
+  }
+
+  &__content {
+    width: 87.5%;
+  }
+}

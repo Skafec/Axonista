@@ -26,11 +26,9 @@ export class SelectedLocationComponent implements OnDestroy {
   }
 
   onSubmit() {
-    // TODO: Could be a util
     this.timerSubscription = timer(0, 10000)
       .pipe(
         map(() => {
-          console.log('called');
           this.sendApiRequest();
           this.cdr.detectChanges();
         })

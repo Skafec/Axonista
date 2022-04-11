@@ -1,4 +1,5 @@
 import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { map, Subscription, timer } from 'rxjs';
 import { CurrentLocationApiService } from 'src/app/services/api/current-location-api.service';
 
@@ -12,8 +13,11 @@ export class CurrentLocationComponent implements OnInit, OnDestroy {
 
   constructor(
     public readonly currentLocationApiService: CurrentLocationApiService,
-    private cdr: ChangeDetectorRef
-  ) {}
+    private cdr: ChangeDetectorRef,
+    private spinner: NgxSpinnerService
+  ) {
+    this.spinner.show();
+  }
 
   ngOnInit(): void {
     // timer(0, 10000) call the function immediately and every 10 seconds

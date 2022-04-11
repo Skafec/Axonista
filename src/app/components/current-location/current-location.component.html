@@ -1,12 +1,21 @@
-<div
-  class="current-location"
-  *ngIf="
-    currentLocationApiService.currentLocationApiData$
-      | async as currentLocationData
-  "
->
-  <h1>Current location: {{ currentLocationData.name }}</h1>
-  <p>
-    Current temperature: {{ currentLocationData.main.temp }}<span>&#176;</span>C
-  </p>
+<div class="current-location card">
+  <h1 class="current-location__title">Current Location</h1>
+  <div
+    *ngIf="
+      currentLocationApiService.currentLocationApiData$
+        | async as currentLocationData;
+      else spinner
+    "
+    class="current-location__wrapper"
+  >
+    <h2>City name: {{ currentLocationData.name }}</h2>
+    <p>
+      Current temperature: {{ currentLocationData.main.temp
+      }}<span>&#176;</span>C
+    </p>
+  </div>
+
+  <ng-template #spinner>
+    <app-spinner></app-spinner>
+  </ng-template>
 </div>

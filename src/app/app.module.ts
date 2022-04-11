@@ -7,6 +7,9 @@ import { CurrentLocationComponent } from './components/current-location/current-
 import { SelectedLocationComponent } from './components/selected-location/selected-location.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -14,8 +17,15 @@ import { ReactiveFormsModule } from '@angular/forms';
     CurrentLocationComponent,
     SelectedLocationComponent,
     SidebarComponent,
+    SpinnerComponent,
   ],
-  imports: [BrowserModule, HttpClientModule, ReactiveFormsModule],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    NgxSpinnerModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
