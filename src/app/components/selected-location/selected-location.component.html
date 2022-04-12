@@ -12,7 +12,8 @@
   <div
     *ngIf="
       selectedLocationApiService.selectedLocationApiData$
-        | async as selectedLocationData
+        | async as selectedLocationData;
+      else spinner
     "
   >
     <p>
@@ -20,4 +21,8 @@
       {{ selectedLocationData.name }}
     </p>
   </div>
+
+  <ng-template #spinner>
+    <app-spinner spinnerName="selected-spinner"></app-spinner>
+  </ng-template>
 </div>

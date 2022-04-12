@@ -16,7 +16,7 @@ export class CurrentLocationComponent implements OnInit, OnDestroy {
     private cdr: ChangeDetectorRef,
     private spinner: NgxSpinnerService
   ) {
-    this.spinner.show();
+    this.spinner.show('current-spinner');
   }
 
   ngOnInit(): void {
