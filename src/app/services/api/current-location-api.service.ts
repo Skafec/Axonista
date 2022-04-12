@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Subject, Subscription } from 'rxjs';
-import { Injectable, OnDestroy } from '@angular/core';
+import { ChangeDetectorRef, Injectable, OnDestroy } from '@angular/core';
 import { UserLocationService } from '../user-location.service';
 import { CurrentWeatherData } from './current-location-data.model';
 import * as util from '../../utils/util';
@@ -35,18 +35,20 @@ export class CurrentLocationApiService implements OnDestroy {
   }
 
   getCurrentLocationApiResponse(lat: number, long: number): void {
-    this.subscriptions.add(
-      this.http.get(util.generateCurrentWeatherApiUrl(lat, long)).subscribe({
-        next: (v) => {
-          this.currentLocationApiData$.next(v as CurrentWeatherData);
-        },
-        error: (e) => {
-          if (e.error && e.error.cod === '404') {
-            console.clear();
-            alert('Getting current location failed');
-          }
-        },
-      })
-    );
+    setTimeout(() => {
+      this.subscriptions.add(
+        this.http.get(util.generateCurrentWeatherApiUrl(lat, long)).subscribe({
+          next: (v) => {
+            this.currentLocationApiData$.next(v as CurrentWeatherData);
+          },
+          error: (e) => {
+            if (e.error && e.error.cod === '404') {
+              console.clear();
+              alert('Getting current location failed');
+            }
+          },
+        })
+      );
+    }, 2000);
   }
 }

@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { map, Subscription, timer } from 'rxjs';
 import { CurrentLocationApiService } from 'src/app/services/api/current-location-api.service';
@@ -13,7 +13,6 @@ export class CurrentLocationComponent implements OnInit, OnDestroy {
 
   constructor(
     public readonly currentLocationApiService: CurrentLocationApiService,
-    private cdr: ChangeDetectorRef,
     private spinner: NgxSpinnerService
   ) {
     this.spinner.show('current-spinner');
@@ -25,7 +24,6 @@ export class CurrentLocationComponent implements OnInit, OnDestroy {
       .pipe(
         map(() => {
           this.currentLocationApiService.initialize();
-          this.cdr.detectChanges();
         })
       )
       .subscribe();

@@ -20,21 +20,23 @@ export class SelectedLocationApiService implements OnDestroy {
   }
 
   getSelectedLocationDataFromApi(location: string): void {
-    this.subscriptions.add(
-      this.http
-        .get(util.generateCurrentWeatherForSelectedApiUrl(location))
-        .subscribe({
-          next: (v) => {
-            this.selectedLocationApiData$.next(v as CurrentWeatherData);
-          },
-          error: (e) => {
-            if (e.error && e.error.cod === '404') {
-              console.clear();
-              this.spinner.hide('selected-spinner');
-              alert('Please type the correct city name');
-            }
-          },
-        })
-    );
+    setTimeout(() => {
+      this.subscriptions.add(
+        this.http
+          .get(util.generateCurrentWeatherForSelectedApiUrl(location))
+          .subscribe({
+            next: (v) => {
+              this.selectedLocationApiData$.next(v as CurrentWeatherData);
+            },
+            error: (e) => {
+              if (e.error && e.error.cod === '404') {
+                console.clear();
+                this.spinner.hide('selected-spinner');
+                alert('Please type the correct city name');
+              }
+            },
+          })
+      );
+    }, 2000);
   }
 }
