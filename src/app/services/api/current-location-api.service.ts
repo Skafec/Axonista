@@ -36,11 +36,17 @@ export class CurrentLocationApiService implements OnDestroy {
 
   getCurrentLocationApiResponse(lat: number, long: number): void {
     this.subscriptions.add(
-      this.http
-        .get(util.generateCurrentWeatherApiUrl(lat, long))
-        .subscribe((res: any) => {
-          this.currentLocationApiData$.next(res);
-        })
+      this.http.get(util.generateCurrentWeatherApiUrl(lat, long)).subscribe({
+        next: (v) => {
+          this.currentLocationApiData$.next(v as CurrentWeatherData);
+        },
+        error: (e) => {
+          if (e.error && e.error.cod === '404') {
+            console.clear();
+            alert('Getting current location failed');
+          }
+        },
+      })
     );
   }
 }

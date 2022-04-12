@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, OnDestroy } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { map, Subscription, timer } from 'rxjs';
+import { map, Subscription, timer, catchError, ObservableInput } from 'rxjs';
 import { SelectedLocationApiService } from 'src/app/services/api/selected-location-api.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 
@@ -29,19 +29,17 @@ export class SelectedLocationComponent implements OnDestroy {
 
   onSubmit() {
     this.spinner.show('selected-spinner');
-    this.timerSubscription = timer(0, 10000)
+    this.timerSubscription = timer(0, 1000)
       .pipe(
         map(() => {
-          this.sendApiRequest();
+          this.sendApiRequest().pipe(catchError((): any => {}));
           this.cdr.detectChanges();
         })
       )
       .subscribe();
   }
 
-  // TODO: Add error handling and hide spinner on error
-
-  sendApiRequest(): void {
+  sendApiRequest(): any {
     this.selectedLocationApiService.getSelectedLocationDataFromApi(
       this.selectedLocationForm.value.city
     );
