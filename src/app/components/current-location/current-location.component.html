@@ -8,10 +8,15 @@
     "
     class="current-location__wrapper"
   >
-    <h2>City name: {{ currentLocationData.name }}</h2>
-    <p>
+    <h2 class="current-location__text">
+      City name: {{ currentLocationData.name }}
+    </h2>
+    <p class="current-location__text">
       Current temperature: {{ currentLocationData.main.temp
       }}<span>&#176;</span>C
+    </p>
+    <p class="current-location__text">
+      {{ currentLocationData.weather[0]?.description }}
     </p>
   </div>
 

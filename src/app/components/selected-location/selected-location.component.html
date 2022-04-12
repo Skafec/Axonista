@@ -1,12 +1,25 @@
 <div class="selected-location card">
   <h1 class="selected-location__title">Select Your Location</h1>
-  <form [formGroup]="selectedLocationForm" (ngSubmit)="onSubmit()">
-    <div>
-      <label for="name"> Please enter a city: </label>
-      <input id="city" type="text" formControlName="city" />
+  <form
+    class="selected-location__form"
+    [formGroup]="selectedLocationForm"
+    (ngSubmit)="onSubmit()"
+  >
+    <div class="selected-location__form-content">
+      <label class="selected-location__form-label" for="name">
+        Please enter a city:
+      </label>
+      <input
+        class="selected-location__form-input"
+        id="city"
+        type="text"
+        formControlName="city"
+      />
     </div>
 
-    <button class="button" type="submit">Check weather conditions</button>
+    <button class="selected-location__form-submit" type="submit">
+      Check weather conditions
+    </button>
   </form>
 
   <div
@@ -16,9 +29,12 @@
       else spinner
     "
   >
-    <p>
-      {{ selectedLocationData.main.temp }} is temperature in
-      {{ selectedLocationData.name }}
+    <p class="selected-location__text">
+      Current temperature in {{ selectedLocationData.name }} is
+      {{ selectedLocationData.main.temp }}<span>&#176;</span>C
+    </p>
+    <p class="selected-location__text">
+      {{ selectedLocationData.weather[0]?.description }}
     </p>
   </div>
 

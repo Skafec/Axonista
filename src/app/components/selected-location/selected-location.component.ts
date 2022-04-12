@@ -13,7 +13,7 @@ export class SelectedLocationComponent implements OnDestroy {
   timerSubscription: Subscription;
 
   selectedLocationForm = this.formBuilder.group({
-    city: '',
+    city: ' ',
   });
 
   constructor(
@@ -29,17 +29,17 @@ export class SelectedLocationComponent implements OnDestroy {
 
   onSubmit() {
     this.spinner.show('selected-spinner');
-    this.timerSubscription = timer(0, 1000)
+    this.timerSubscription = timer(0, 10000)
       .pipe(
         map(() => {
-          this.sendApiRequest().pipe(catchError((): any => {}));
+          this.sendApiRequest();
           this.cdr.detectChanges();
         })
       )
       .subscribe();
   }
 
-  sendApiRequest(): any {
+  sendApiRequest(): void {
     this.selectedLocationApiService.getSelectedLocationDataFromApi(
       this.selectedLocationForm.value.city
     );

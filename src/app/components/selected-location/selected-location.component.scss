@@ -1,9 +1,44 @@
 .selected-location {
   margin-top: 30px;
   background-color: #585d71;
+  text-align: center;
 
   &__title {
-    text-align: center;
     margin-bottom: 30px;
+  }
+
+  &__form {
+    margin-bottom: 20px;
+  }
+
+  &__form-content {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+  }
+
+  &__form-label {
+    margin-right: 20px;
+  }
+
+  &__form-input {
+    background-color: transparent;
+    border: unset;
+    border-bottom: 1px solid #fff;
+    color: #f2f2f2;
+    margin-bottom: 20px;
+  }
+
+  &__form-submit {
+    background-color: #0b25e5;
+    display: block;
+    margin: 0 auto;
+    padding: 6px;
+    border-color: transparent;
+    border-radius: 6px;
+  }
+
+  &__text {
+    padding-bottom: 20px;
   }
 }
