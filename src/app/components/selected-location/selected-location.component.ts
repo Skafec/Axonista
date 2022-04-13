@@ -23,7 +23,9 @@ export class SelectedLocationComponent implements OnDestroy {
   ) {}
 
   ngOnDestroy(): void {
-    this.timerSubscription.unsubscribe();
+    if (this.timerSubscription) {
+      this.timerSubscription.unsubscribe();
+    }
   }
 
   onSubmit() {
