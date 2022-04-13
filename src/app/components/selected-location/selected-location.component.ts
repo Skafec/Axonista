@@ -23,9 +23,7 @@ export class SelectedLocationComponent implements OnDestroy {
   ) {}
 
   ngOnDestroy(): void {
-    if (this.timerSubscription) {
-      this.timerSubscription.unsubscribe();
-    }
+    this.stopTimerSubscription();
   }
 
   onSubmit() {
@@ -44,5 +42,11 @@ export class SelectedLocationComponent implements OnDestroy {
     this.selectedLocationApiService.getSelectedLocationDataFromApi(
       this.selectedLocationForm.value.city
     );
+  }
+
+  stopTimerSubscription(): void {
+    if (this.timerSubscription) {
+      this.timerSubscription.unsubscribe();
+    }
   }
 }
