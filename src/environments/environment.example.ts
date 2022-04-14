@@ -3,5 +3,5 @@
 
 export const environment = {
   production: false,
-  apiKey: 'your-api-ket',
+  apiKey: 'your-api-key',
 };
